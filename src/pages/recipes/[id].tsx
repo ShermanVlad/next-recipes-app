@@ -9,7 +9,7 @@ import {
   InstructionsList,
   NutritionInfo,
   RecipeDetailsLoadingSkeleton,
-  ErrorDisplay
+  ErrorDisplay,
 } from '@/components';
 
 interface RecipeDetailsPageProps {
@@ -17,7 +17,10 @@ interface RecipeDetailsPageProps {
   error?: string;
 }
 
-export default function RecipeDetailsPage({ recipe, error }: RecipeDetailsPageProps) {
+export default function RecipeDetailsPage({
+  recipe,
+  error,
+}: RecipeDetailsPageProps) {
   if (error) {
     return <ErrorDisplay message={error} />;
   }
@@ -59,7 +62,9 @@ export default function RecipeDetailsPage({ recipe, error }: RecipeDetailsPagePr
               )}
 
               <IngredientsList ingredients={recipe.extendedIngredients || []} />
-              <InstructionsList instructions={recipe.analyzedInstructions || []} />
+              <InstructionsList
+                instructions={recipe.analyzedInstructions || []}
+              />
               <NutritionInfo nutrition={recipe.nutrition} />
             </div>
           </div>
@@ -88,7 +93,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   } catch (error) {
-    console.error('Error in getServerSideProps:', error);
     return {
       props: {
         recipe: {} as RecipeDetails,
@@ -96,4 +100,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
-}; 
+};

@@ -7,7 +7,9 @@ interface SearchSummaryProps {
 export default function SearchSummary({ searchParams }: SearchSummaryProps) {
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
-      <h2 className="text-lg font-semibold text-gray-800 mb-2">Search Criteria</h2>
+      <h2 className="text-lg font-semibold text-gray-800 mb-2">
+        Search Criteria
+      </h2>
       <div className="flex flex-wrap gap-2">
         {searchParams.query && (
           <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
@@ -27,4 +29,4 @@ export default function SearchSummary({ searchParams }: SearchSummaryProps) {
       </div>
     </div>
   );
-} 
+}

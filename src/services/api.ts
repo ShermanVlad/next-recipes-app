@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { Recipe, RecipeDetails, SearchParams } from '@/types';
+import { getMockCuisines } from '@/data/mockData';
 
 const API_KEY = process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY;
 const BASE_URL = process.env.NEXT_PUBLIC_SPOONACULAR_BASE_URL;
@@ -19,13 +20,13 @@ function getCacheKey(endpoint: string, params: any): string {
 function getFromCache(key: string): any | null {
   const entry = cache.get(key);
   if (!entry) return null;
-  
+
   const now = Date.now();
   if (now - entry.timestamp > CACHE_DURATION) {
     cache.delete(key);
     return null;
   }
-  
+
   return entry.data;
 }
 
@@ -52,7 +53,6 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    console.log(`Making request to: ${config.url}`);
     return config;
   },
   (error) => {
@@ -65,38 +65,40 @@ apiClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error('API Error:', error.response?.status, error.response?.data);
     return Promise.reject(error);
   }
 );
+
+export async function getAvailableCuisines(): Promise<string[]> {
+  return getMockCuisines();
+}
 
 export async function searchRecipes(params: SearchParams): Promise<Recipe[]> {
   const searchParams: any = {
     number: 100,
   };
-  
+
   if (params.query) searchParams.query = params.query;
   if (params.cuisine) searchParams.cuisine = params.cuisine;
   if (params.maxReadyTime) searchParams.maxReadyTime = params.maxReadyTime;
-  
+
   const cacheKey = getCacheKey('complexSearch', searchParams);
   const cachedData = getFromCache(cacheKey);
-  
+
   if (cachedData) {
     return cachedData;
   }
-  
+
   try {
     const response: AxiosResponse = await apiClient.get('/complexSearch', {
       params: searchParams,
     });
-    
+
     const recipes = response.data.results || [];
     setCache(cacheKey, recipes);
-    
+
     return recipes;
   } catch (error) {
-    console.error('Error fetching recipes:', error);
     throw new Error('Failed to fetch recipes');
   }
 }
@@ -104,20 +106,19 @@ export async function searchRecipes(params: SearchParams): Promise<Recipe[]> {
 export async function getRecipeDetails(id: number): Promise<RecipeDetails> {
   const cacheKey = getCacheKey('recipeDetails', { id });
   const cachedData = getFromCache(cacheKey);
-  
+
   if (cachedData) {
     return cachedData;
   }
-  
+
   try {
     const response: AxiosResponse = await apiClient.get(`/${id}/information`);
-    
+
     const recipe = response.data;
     setCache(cacheKey, recipe);
-    
+
     return recipe;
   } catch (error) {
-    console.error('Error fetching recipe details:', error);
     throw new Error('Failed to fetch recipe details');
   }
 }

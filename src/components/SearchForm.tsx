@@ -7,15 +7,18 @@ interface SearchFormProps {
   isLoading?: boolean;
 }
 
-export default function SearchForm({ onSubmit, isLoading = false }: SearchFormProps) {
+export default function SearchForm({
+  onSubmit,
+  isLoading = false,
+}: SearchFormProps) {
   const [formData, setFormData] = useState<SearchFormData>({
     query: '',
     cuisine: '',
     maxReadyTime: '',
   });
-  const [cuisineOptions, setCuisineOptions] = useState<{ value: string; label: string }[]>([
-    { value: '', label: 'Loading cuisines...' },
-  ]);
+  const [cuisineOptions, setCuisineOptions] = useState<
+    { value: string; label: string }[]
+  >([{ value: '', label: 'Loading cuisines...' }]);
   const [isLoadingCuisines, setIsLoadingCuisines] = useState(true);
 
   useEffect(() => {
@@ -31,7 +34,6 @@ export default function SearchForm({ onSubmit, isLoading = false }: SearchFormPr
         ];
         setCuisineOptions(options);
       } catch (error) {
-        console.error('Failed to fetch cuisines:', error);
         setCuisineOptions([
           { value: '', label: 'Select Cuisine' },
           { value: 'italian', label: 'Italian' },
@@ -118,9 +120,7 @@ export default function SearchForm({ onSubmit, isLoading = false }: SearchFormPr
           type="number"
           id="maxReadyTime"
           value={formData.maxReadyTime}
-          onChange={(e) =>
-            handleInputChange('maxReadyTime', e.target.value)
-          }
+          onChange={(e) => handleInputChange('maxReadyTime', e.target.value)}
           placeholder="e.g., 30"
           min="1"
           max="180"
@@ -137,8 +137,12 @@ export default function SearchForm({ onSubmit, isLoading = false }: SearchFormPr
             : 'bg-gray-300 cursor-not-allowed'
         }`}
       >
-        {isLoadingCuisines ? 'Loading...' : isLoading ? 'Searching...' : 'Find Recipes'}
+        {isLoadingCuisines
+          ? 'Loading...'
+          : isLoading
+          ? 'Searching...'
+          : 'Find Recipes'}
       </button>
     </form>
   );
-} 
+}

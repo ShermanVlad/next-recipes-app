@@ -9,7 +9,8 @@ export default function SearchPage() {
     const searchParams = new URLSearchParams();
     if (formData.query) searchParams.append('query', formData.query);
     if (formData.cuisine) searchParams.append('cuisine', formData.cuisine);
-    if (formData.maxReadyTime) searchParams.append('maxReadyTime', formData.maxReadyTime);
+    if (formData.maxReadyTime)
+      searchParams.append('maxReadyTime', formData.maxReadyTime);
 
     router.push(`/recipes?${searchParams.toString()}`);
   };

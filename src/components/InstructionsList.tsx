@@ -4,16 +4,16 @@ interface InstructionsListProps {
   instructions: AnalyzedInstruction[];
 }
 
-export default function InstructionsList({ instructions }: InstructionsListProps) {
+export default function InstructionsList({
+  instructions,
+}: InstructionsListProps) {
   if (!instructions || instructions.length === 0) {
     return null;
   }
 
   return (
     <div className="mb-8">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">
-        Instructions
-      </h2>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Instructions</h2>
       <div className="space-y-4">
         {instructions[0]?.steps.map((step) => (
           <div key={step.number} className="flex">
@@ -21,13 +21,11 @@ export default function InstructionsList({ instructions }: InstructionsListProps
               {step.number}
             </div>
             <div className="flex-1">
-              <p className="text-gray-700 leading-relaxed">
-                {step.step}
-              </p>
+              <p className="text-gray-700 leading-relaxed">{step.step}</p>
             </div>
           </div>
         ))}
       </div>
     </div>
   );
-} 
+}

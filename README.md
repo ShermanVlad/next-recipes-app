@@ -5,18 +5,21 @@ A modern, responsive recipe discovery application built with Next.js, TypeScript
 ## Features
 
 - **Search Page**: Beautiful home page with search form
+
   - Recipe query input with smart validation
   - Cuisine type dropdown with 27+ options from mock data
   - Maximum preparation time filter
   - Form validation requiring at least one field
 
 - **Recipes Page**: Display search results with server-side rendering
+
   - Responsive grid layout with recipe cards
   - Search criteria summary with visual tags
   - Loading states with Suspense and skeleton components
   - Empty state handling with call-to-action
 
 - **Recipe Details Page**: Comprehensive recipe information
+
   - Recipe title, image, and metadata
   - Preparation time, servings, and cuisine information
   - Ingredients list with visual indicators
@@ -45,7 +48,7 @@ A modern, responsive recipe discovery application built with Next.js, TypeScript
 
 ## Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Spoonacular API key (free account)
 
@@ -129,24 +132,29 @@ src/
 ## Component Architecture
 
 ### Form Components
+
 - **SearchForm**: Handles search input with validation and cuisine dropdown
 
 ### Layout Components
+
 - **PageHeader**: Consistent navigation header across pages
 - **ErrorDisplay**: Standardized error handling and display
 
 ### Recipe Components
+
 - **RecipeCard**: Individual recipe display with hover effects
 - **RecipesGrid**: Grid layout with empty state handling
 - **SearchSummary**: Visual display of search criteria
 
 ### Recipe Details Components
+
 - **RecipeStats**: Recipe metadata (time, servings, cuisine)
 - **IngredientsList**: Ingredients display with visual indicators
 - **InstructionsList**: Step-by-step instructions with numbering
 - **NutritionInfo**: Nutrition data in card format
 
 ### Loading Components
+
 - **LoadingSkeleton**: Skeleton loading states for recipes and details
 
 ## API Integration
@@ -155,7 +163,8 @@ The app integrates with the Spoonacular Food API with intelligent caching:
 
 ### API Endpoints Used
 
-1. **Complex Search**: 
+1. **Complex Search**:
+
    - URL: `https://api.spoonacular.com/recipes/complexSearch`
    - Parameters: `query`, `cuisine`, `maxReadyTime`, `apiKey`
    - Cached for 1 minute
@@ -252,6 +261,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Support
 
 For support or questions:
+
 - Check the [Spoonacular API documentation](https://spoonacular.com/food-api/docs)
 - Review the Next.js documentation
 - Open an issue in the repository

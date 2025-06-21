@@ -7,7 +7,7 @@ import {
   SearchSummary,
   RecipesGrid,
   RecipesLoadingSkeleton,
-  ErrorDisplay
+  ErrorDisplay,
 } from '@/components';
 
 interface RecipesPageProps {
@@ -16,7 +16,11 @@ interface RecipesPageProps {
   error?: string;
 }
 
-export default function RecipesPage({ recipes, searchParams, error }: RecipesPageProps) {
+export default function RecipesPage({
+  recipes,
+  searchParams,
+  error,
+}: RecipesPageProps) {
   if (error) {
     return <ErrorDisplay message={error} />;
   }
@@ -45,13 +49,17 @@ export default function RecipesPage({ recipes, searchParams, error }: RecipesPag
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { query, cuisine, maxReadyTime } = context.query;
-    
+
     const searchParams: SearchParams = {};
     if (query) searchParams.query = query as string;
     if (cuisine) searchParams.cuisine = cuisine as string;
     if (maxReadyTime) searchParams.maxReadyTime = parseInt(maxReadyTime as string);
 
-    if (!searchParams.query && !searchParams.cuisine && !searchParams.maxReadyTime) {
+    if (
+      !searchParams.query &&
+      !searchParams.cuisine &&
+      !searchParams.maxReadyTime
+    ) {
       return {
         redirect: {
           destination: '/',
@@ -69,7 +77,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   } catch (error) {
-    console.error('Error in getServerSideProps:', error);
     return {
       props: {
         recipes: [],
@@ -78,4 +85,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
-}; 
+};

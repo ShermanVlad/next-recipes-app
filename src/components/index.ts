@@ -8,4 +8,7 @@ export { default as RecipeStats } from './RecipeStats';
 export { default as IngredientsList } from './IngredientsList';
 export { default as InstructionsList } from './InstructionsList';
 export { default as NutritionInfo } from './NutritionInfo';
-export { RecipesLoadingSkeleton, RecipeDetailsLoadingSkeleton } from './LoadingSkeleton'; 
+export {
+  RecipesLoadingSkeleton,
+  RecipeDetailsLoadingSkeleton,
+} from './LoadingSkeleton';

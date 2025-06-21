@@ -7,11 +7,11 @@ interface ErrorDisplayProps {
   actionHref?: string;
 }
 
-export default function ErrorDisplay({ 
-  title = 'Error', 
-  message, 
+export default function ErrorDisplay({
+  title = 'Error',
+  message,
   actionText = 'Back to Search',
-  actionHref = '/'
+  actionHref = '/',
 }: ErrorDisplayProps) {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -27,4 +27,4 @@ export default function ErrorDisplay({
       </div>
     </div>
   );
-} 
+}

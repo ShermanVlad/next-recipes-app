@@ -7,11 +7,11 @@ interface PageHeaderProps {
   backText?: string;
 }
 
-export default function PageHeader({ 
-  title, 
-  showBackButton = true, 
-  backHref = '/', 
-  backText = '← Back to Search' 
+export default function PageHeader({
+  title,
+  showBackButton = true,
+  backHref = '/',
+  backText = '← Back to Search',
 }: PageHeaderProps) {
   return (
     <div className="bg-white shadow-sm border-b">
@@ -33,4 +33,4 @@ export default function PageHeader({
       </div>
     </div>
   );
-} 
+}

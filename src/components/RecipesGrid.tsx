@@ -13,9 +13,7 @@ export default function RecipesGrid({ recipes }: RecipesGridProps) {
         <h3 className="text-xl font-semibold text-gray-800 mb-2">
           No recipes found
         </h3>
-        <p className="text-gray-600 mb-4">
-          Try adjusting your search criteria
-        </p>
+        <p className="text-gray-600 mb-4">Try adjusting your search criteria</p>
         <Link
           href="/"
           className="inline-block bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors"
@@ -33,4 +31,4 @@ export default function RecipesGrid({ recipes }: RecipesGridProps) {
       ))}
     </div>
   );
-} 
+}

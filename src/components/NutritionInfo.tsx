@@ -31,15 +31,11 @@ export default function NutritionInfo({ nutrition }: NutritionInfoProps) {
             <div className="text-lg font-semibold text-gray-800">
               {Math.round(nutrient.amount)}
             </div>
-            <div className="text-sm text-gray-600">
-              {nutrient.name}
-            </div>
-            <div className="text-xs text-gray-500">
-              {nutrient.unit}
-            </div>
+            <div className="text-sm text-gray-600">{nutrient.name}</div>
+            <div className="text-xs text-gray-500">{nutrient.unit}</div>
           </div>
         ))}
       </div>
     </div>
   );
-} 
+}

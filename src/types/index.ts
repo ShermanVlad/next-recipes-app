@@ -63,4 +63,4 @@ export interface SearchFormData {
   query: string;
   cuisine: string;
   maxReadyTime: string;
-} 
+}

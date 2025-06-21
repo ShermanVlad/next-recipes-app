@@ -29,12 +29,8 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
           {recipe.title}
         </h3>
         <div className="flex items-center justify-between text-sm text-gray-600">
-          {recipe.readyInMinutes && (
-            <span>⏱️ {recipe.readyInMinutes} min</span>
-          )}
-          {recipe.servings && (
-            <span>👥 {recipe.servings} servings</span>
-          )}
+          {recipe.readyInMinutes && <span>⏱️ {recipe.readyInMinutes} min</span>}
+          {recipe.servings && <span>👥 {recipe.servings} servings</span>}
         </div>
         {recipe.cuisines && recipe.cuisines.length > 0 && (
           <div className="mt-2">
@@ -46,4 +42,4 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
       </div>
     </Link>
   );
-} 
+}

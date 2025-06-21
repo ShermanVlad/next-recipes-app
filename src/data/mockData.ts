@@ -25,7 +25,7 @@ export const MOCK_CUISINES = [
   'Southern',
   'Spanish',
   'Thai',
-  'Vietnamese'
+  'Vietnamese',
 ];
 
 export function getMockCuisines(): string[] {
