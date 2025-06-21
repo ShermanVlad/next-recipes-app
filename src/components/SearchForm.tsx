@@ -54,7 +54,8 @@ export default function SearchForm({
     fetchCuisines();
   }, []);
 
-  const isFormValid = formData.query || formData.cuisine || formData.maxReadyTime;
+  const isFormValid =
+    formData.query || formData.cuisine || formData.maxReadyTime;
 
   const handleInputChange = (field: keyof SearchFormData, value: string) => {
     setFormData((prev) => ({
@@ -140,8 +141,8 @@ export default function SearchForm({
         {isLoadingCuisines
           ? 'Loading...'
           : isLoading
-          ? 'Searching...'
-          : 'Find Recipes'}
+            ? 'Searching...'
+            : 'Find Recipes'}
       </button>
     </form>
   );

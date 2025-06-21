@@ -5,5 +5,6 @@ module.exports = {
     'prettier/prettier': 'error',
     'no-unused-vars': 'warn',
     'no-console': 'warn',
+    '@next/next/no-img-element': 'off',
   },
 };

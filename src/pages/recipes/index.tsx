@@ -53,7 +53,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const searchParams: SearchParams = {};
     if (query) searchParams.query = query as string;
     if (cuisine) searchParams.cuisine = cuisine as string;
-    if (maxReadyTime) searchParams.maxReadyTime = parseInt(maxReadyTime as string);
+    if (maxReadyTime)
+      searchParams.maxReadyTime = parseInt(maxReadyTime as string);
 
     if (
       !searchParams.query &&
